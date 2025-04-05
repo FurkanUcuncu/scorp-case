@@ -63,7 +63,7 @@ describe('UserView.vue', () => {
   it('navigates to home when no user is selected', async () => {
     store.selectedUser = null;
     
-    const wrapper = mount(UserView, {
+    mount(UserView, {
       global: {
         plugins: [pinia, router]
       }
