@@ -10,16 +10,16 @@ defineProps<ISorterProps>();
       :data-testid="`${sortColumn}-sorter-asc`"
       class="border-3 border-x-transparent border-t-0 border-b-4 border-b-black"
       :class="{
-        'opacity-100': currentSort.sort === sortColumn && currentSort.direction === 'desc',
-        'opacity-30': currentSort.sort !== sortColumn || (currentSort.sort === sortColumn && currentSort.direction === 'asc')
+        'opacity-100': currentSort.sort === sortColumn && currentSort.direction === 'asc',
+        'opacity-30': currentSort.sort !== sortColumn || (currentSort.sort === sortColumn && currentSort.direction === 'desc')
       }"
     />
     <div
       :data-testid="`${sortColumn}-sorter-desc`"
       class="border-3 border-x-transparent border-b-0 border-t-4 border-t-black"
       :class="{
-        'opacity-100': currentSort.sort === sortColumn && currentSort.direction === 'asc',
-        'opacity-30': currentSort.sort !== sortColumn || (currentSort.sort === sortColumn && currentSort.direction === 'desc')
+        'opacity-100': currentSort.sort === sortColumn && currentSort.direction === 'desc',
+        'opacity-30': currentSort.sort !== sortColumn || (currentSort.sort === sortColumn && currentSort.direction === 'asc')
       }"
     />
   </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import { storeToRefs } from 'pinia';
 // import SearchInput from './SearchInput.vue';
@@ -9,8 +9,23 @@ const userStore = useUserStore();
 const { currentFilter, currentGenderFilter } = storeToRefs(userStore);
 
 const isOpen = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
 const localSearch = ref('');
 const localGender = ref('');
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
+    isOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value;
@@ -39,7 +54,7 @@ const handleReset = () => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative" ref="dropdownRef">
     <button
       @click="toggleDropdown"
       class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
