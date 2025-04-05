@@ -8,7 +8,6 @@ const userStore = useUserStore();
 const { sort } = storeToRefs(userStore);
 
 const onSortChange = (column: string) => {
-  // If clicking the same column, cycle through states
   if (sort.value.sort === column) {
     if (sort.value.direction === 'asc') {
       userStore.setSort({
@@ -16,14 +15,12 @@ const onSortChange = (column: string) => {
         direction: 'desc'
       });
     } else if (sort.value.direction === 'desc') {
-      // Reset to null state
       userStore.setSort({
         sort: '',
         direction: 'asc'
       });
     }
   } else {
-    // If clicking a different column, start with ascending
     userStore.setSort({
       sort: column,
       direction: 'asc'

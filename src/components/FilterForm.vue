@@ -2,8 +2,6 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import { storeToRefs } from 'pinia';
-// import SearchInput from './SearchInput.vue';
-// import GenderFilter from './GenderFilter.vue';
 
 const userStore = useUserStore();
 const { currentFilter, currentGenderFilter } = storeToRefs(userStore);
