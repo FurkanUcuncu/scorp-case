@@ -5,7 +5,7 @@ const props = defineProps<ITableSkeletonProps>();
 </script>
 
 <template>
-  <tr v-for="(_, index) in props.rowCount" :key="index">
+  <tr data-testid="table-skeleton" v-for="(_, index) in props.rowCount" :key="index">
     <td 
       v-for="column in props.columns" 
       :key="column.width"

@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/userStore';
 import TableHeader from '@components/TableHeader.vue';
 import TableBody from '@components/TableBody.vue';
 import Pagination from '@components/Pagination.vue';
-import Error from '@components/Error.vue';
+import Error from '@/components/ErrorMessage.vue';
 import FilterForm from '@components/FilterForm.vue';
 
 const userStore = useUserStore();
@@ -24,9 +24,9 @@ watch([sort, currentPage], () => {
   <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-[1440px] mx-auto p-5">
       <div class="bg-white rounded-lg shadow-sm">
-        <div class="p-6 border-b border-gray-200">
-          <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-semibold text-gray-900">Users Management</h1>
+        <div class="p-6 border-b border-gray-200 max-[450px]:p-0">
+          <div class="flex justify-between items-center gap-4 mb-6 max-[450px]:flex-col max-[450px]:items-start">
+            <h1 class="text-2xl font-semibold text-gray-900 max-[450px]:text-xl max-[450px]:p-2">Users Management</h1>
             <FilterForm />
           </div>
           
@@ -46,8 +46,7 @@ watch([sort, currentPage], () => {
               </table>
             </div>
             
-            <div class="px-6 py-4 border-t border-gray-200 flex justify-between items-center">
-              <ResultInfo />
+            <div class="px-6 py-4 w-full border-t border-gray-200 flex justify-end items-center max-[450px]:justify-center">
               <Pagination
                 :range="2"
                 :jump-size="5"

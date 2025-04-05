@@ -37,7 +37,7 @@ const goBack = () => {
         <div class="p-6">
           <button 
             @click="goBack"
-            class="mb-6 inline-flex items-center text-sm text-gray-600 hover:text-gray-900"
+            class="mb-6 inline-flex items-center text-sm text-gray-600 hover:text-gray-900 cursor-pointer"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -46,11 +46,12 @@ const goBack = () => {
           </button>
 
           <div v-if="selectedUser" class="space-y-6">
-            <div class="flex justify-between items-start">
-              <h1 class="text-2xl font-semibold text-gray-900">
+            <div class="flex justify-between items-center">
+              <h1 class="text-2xl font-semibold text-gray-900 max-[450px]:text-xl">
                 {{ selectedUser.firstName }} {{ selectedUser.lastName }}
               </h1>
               <button
+                data-testid="favorite-button"
                 @click="toggleFavorite"
                 class="p-2 rounded-full hover:bg-gray-100"
                 :class="{ 'text-red-500': isFavorite(selectedUser.id) }"
@@ -67,9 +68,9 @@ const goBack = () => {
             </div>
 
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div v-for="detail in userDetails" :key="detail.key" class="bg-gray-50 p-4 rounded-lg">
-                <h3 class="text-sm font-medium text-gray-500">{{ detail.key }}</h3>
-                <p class="mt-1 text-lg text-gray-900 wrap-anywhere">{{ detail.value }}</p>
+              <div v-for="detail in userDetails" :key="detail.key" class="bg-gray-50 p-4 rounded-lg max-[450px]:p-2">
+                <h3 class="text-sm font-medium text-gray-500 max-[450px]:text-xs">{{ detail.key }}</h3>
+                <p class="mt-1 text-lg text-gray-900 wrap-anywhere max-[450px]:text-sm">{{ detail.value }}</p>
               </div>
             </div>
           </div>

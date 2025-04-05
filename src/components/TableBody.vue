@@ -5,7 +5,7 @@ import { tableSkeletonColumnWidths } from '@/utils/constants';
 import { IUser } from '@/types/user.types';
 import { useUserStore } from '@/stores/userStore';
 import TableSkeleton from '@/components/TableSkeleton.vue';
-import Error from '@/components/Error.vue';
+import Error from '@/components/ErrorMessage.vue';
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -23,7 +23,7 @@ const columns = [
 
 const handleUserClick = (user: IUser) => {
   userStore.setSelectedUser(user);
-  router.push('/about');
+  router.push('/user');
 };
 </script>
 

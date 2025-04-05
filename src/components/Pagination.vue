@@ -71,7 +71,7 @@ const handleMouseLeave = (event: MouseEvent) => {
       :disabled="currentPage === 1 || isFetching"
       @click="onPageChange(currentPage - 1)"
     >
-      Previous
+      {{'<'}}
     </button>
     
     <template v-for="(page, index) in getPageNumbers" :key="index">
@@ -87,6 +87,7 @@ const handleMouseLeave = (event: MouseEvent) => {
       </button>
       <button
         v-else
+        :data-testid="`pagination-button-${page}`"
         :disabled="isFetching"
         class="bg-white text-gray-500 px-2 py-1.5 rounded text-sm outline-none border-none cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed hover:bg-gray-100"
         :class="{ '!bg-[#36304a] !text-white hover:!bg-[#36304a]': page === currentPage }"
@@ -102,7 +103,7 @@ const handleMouseLeave = (event: MouseEvent) => {
       :disabled="currentPage >= totalPages || isFetching"
       @click="onPageChange(currentPage + 1)"
     >
-      Next
+      {{'>'}}
     </button>
   </div>
 </template>
